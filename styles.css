@@ -1,5 +1,5 @@
 body {
-	color:orange;
+	background-color:orange;
 }
 p {
 	 font-family:"Arial";
@@ -7,7 +7,7 @@ p {
 	 border: 3px dashed powderblue;
 }
  img {
-	height: 143px;
+	height: 144px;
 }
 h1 {
 	font-family:"Abril Fatface";
@@ -19,8 +19,13 @@ h1 {
 }
  .bg-2 {
  	background-color:orange;
- }
- 	.bg-1 {
+}
+.bg-1 {
  		background-color:powderblue;
  		font-family: "Abril Fatface";
- 	}
+ 		color:black;
+ }
+ .bott {
+ 	background-color: darkgrey;
+ }
+ 
