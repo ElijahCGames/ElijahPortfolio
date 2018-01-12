@@ -3,7 +3,8 @@ body {
 }
 p {
 	 font-family:"Abril Fatface";
+	  border: 3px dashed powderblue;
 }
 img {
-	width: 300px ;
+	width: 300px;
 }
