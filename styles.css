@@ -2,5 +2,8 @@ body {
 	background-color: orange;
 }
 p {
-	 font-family: Arial, sans-serif;
+	 font-family:"Abril Fatface";
+}
+img {
+	width: 300px ;
 }
