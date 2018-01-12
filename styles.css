@@ -1,10 +1,26 @@
 body {
-	background-color: orange;
+	color:orange;
 }
 p {
-	 font-family:"Abril Fatface";
-	  border: 3px dashed powderblue;
+	 font-family:"Arial";
+	 font-size: 24px;
+	 border: 3px dashed powderblue;
 }
-img {
-	width: 300px;
+ img {
+	height: 143px;
 }
+h1 {
+	font-family:"Abril Fatface";
+}
+
+.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+ .bg-2 {
+ 	background-color:orange;
+ }
+ 	.bg-1 {
+ 		background-color:powderblue;
+ 		font-family: "Abril Fatface";
+ 	}
