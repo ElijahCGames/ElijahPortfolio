@@ -1,24 +1,24 @@
 body {
-	background-color:orange;
+	background-color:lightgrey;
 }
 p {
 	 font-family:"Arial";
 	 font-size: 24px;
-	 border: 3px dashed powderblue;
-}
- img {
-	height: 144px;
 }
 h1 {
 	font-family:"Abril Fatface";
 }
 
+.assignment-pic{
+	width: 100%;
+}
+
 .container-fluid {
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 }
  .bg-2 {
- 	background-color:orange;
+ 	background-color:#fffaf4;
  	margin-top: 90px;
 }
 .bg-1 {
@@ -26,7 +26,9 @@ h1 {
  		font-family: "Abril Fatface";
  		color:black;
  }
+ .bore {
+ 	border: lightblue dotted 5px;
+ }
  .bott {
  	background-color: darkgrey;
  }
- 

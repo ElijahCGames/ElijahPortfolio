@@ -12,6 +12,9 @@
     <link rel="shortcut icon" type="image/x-icon" href="gah.ico" />
 </head>
 <body>
+	<canvas id="myCanvas" style="position:absolute;top:0;right:0;width:100%;height:100%;z-index:-1;background-color:#fffaf4">
+	</canvas>
+	<!-- Nav Bar -->
 	<div class = "navbar-default navbar-fixed-top">
 			<div class = "container-fluid bg-1">
 				<div class = "navbar-header">
@@ -25,14 +28,22 @@
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class = "nav navbar-nav">
 						<li><a href="about.html">About</a></li>
-						<li><a href="#">Pages</a></li>
+						<li class="dropdown">
+					        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Assignments
+					        <span class="caret"></span></a>
+					        <ul class="dropdown-menu">
+					          <li><a href="#">Week 1</a></li>
+					          <li><a href="#">Week 2</a></li>
+					          <li><a href="#">Week 3</a></li>
+					       </ul>
 						<li><a href="Random.html">Random</a></li>
 					</ul>
 				</div>
 			</div>
 	</div>
+	<!-- Body -->
 	<div class = "bg-2 container-fluid">
-		<div class = row>
+		<div class = "row">
 			<div class = "col-md-9">
 				<p> Oh, what a beautiful mornin'<br>
 					Oh, what a beautiful day<br>
@@ -40,46 +51,26 @@
 					Everything's goin' my way</p>
 			</div>
 			<div class = "col-md-1">
-				<img src = "Courtroom1.jpg" alt = "AGGRJECTAR">
+				<img src = "Images/Courtroom1.jpg" alt = "AGGRJECTAR" style="height:144px">
 			</div>
 		</div>
 	</div>
 	<div class = "bott container-fluid">
-			<p>It is an ancient Mariner,<br>
-				And he stoppeth one of three.<br>
-				'By thy long grey beard and glittering eye,<br>
-				Now wherefore stopp'st thou me?<br>
-				<br>
-				The Bridegroom's doors are opened wide,<br>
-				And I am next of kin;<br>
-				The guests are met, the feast is set:<br>
-				May'st hear the merry din.'<br><br>
-
-				He holds him with his skinny hand,<br>
-				'There was a ship,' quoth he.<br>
-				'Hold off! unhand me, grey-beard loon!'<br>
-				Eftsoons his hand dropt he.<br><br>
-
-				He holds him with his glittering eye—<br>
-				The Wedding-Guest stood still,<br>
-				And listens like a three years' child:<br>
-				The Mariner hath his will.<br><br>
-
-				The Wedding-Guest sat on a stone:<br><br>
-				He cannot choose but hear;<br>
-				And thus spake on that ancient man,<br>
-				The bright-eyed Mariner.
-				<br><br>
-				'The ship was cheered, the harbour cleared,<br>
-				Merrily did we drop<br>
-				Below the kirk, below the hill,<br><br>
-				Below the lighthouse top.<br>
-
-				The Sun came up upon the left,<br>
-				Out of the sea came he!
-				And he shone bright, and on the right<br>
-				Went down into the sea.
-			</p>
+		<h2>Weekly Assignments</h2>
+		<div class = "row">
+			<div class = "col-sm-4">
+				<h3>Week 1</h3>
+				<img src = "Images/Courtroom1.jpg" class = "assignment-pic img-rounded">
+			</div>
+			<div class = "col-sm-4">
+				<h3>Week 2</h3>
+				<img src = "Images/Courtroom1.jpg" class = "assignment-pic img-rounded">
+			</div>
+			<div class = "col-sm-4">
+				<h3>Week 3</h3>
+				<img src = "Images/Courtroom1.jpg" class = "assignment-pic img-rounded">
+			</div>
+		</div>
 	</div>
 </body>
 </html>
