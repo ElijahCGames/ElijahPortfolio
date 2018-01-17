@@ -1,6 +1,4 @@
-body {
-	background-color:lightgrey;
-}
+
 p {
 	 font-family:"Arial";
 	 font-size: 24px;
@@ -9,6 +7,17 @@ h1 {
 	font-family:"Abril Fatface";
 }
 
+b {
+	color: orange;
+}
+
+h3 {
+	text-align:center;
+}
+
+a{
+	color:red;
+}
 .assignment-pic{
 	width: 100%;
 }
