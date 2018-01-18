@@ -1,7 +1,7 @@
 
 p {
 	 font-family:"Arial";
-	 font-size: 24px;
+	 font-size: 26px;
 }
 h1 {
 	font-family:"Abril Fatface";
@@ -14,10 +14,19 @@ b {
 h3 {
 	text-align:center;
 }
-
-a{
-	color:red;
+a:link{ 
+	color:red; 
 }
+a:visited { 
+	color:red; 
+}
+a:hover {
+	color: !important;
+	}
+a:active {
+	color: !important;
+}
+
 .assignment-pic{
 	width: 100%;
 }
