@@ -52,14 +52,10 @@ a:active {
 
 .jumbotron{
  	margin-top:120px;
- 	margin-left: 0%;
- 	margin-right:10%;
  	transition: margin-left 2s, margin-right 2s;
  }
 
  .jumbotron:hover {
- 	margin-left: 10%;
- 	margin-right: 0%;
  }
 
 .container-fluid {
