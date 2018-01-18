@@ -1,3 +1,8 @@
+body{
+	background-image: url(Images/B&Wback.png);
+	background-attachment: fixed;
+}
+
 
 p {
 	 font-family:"Arial";
@@ -15,38 +20,79 @@ h3 {
 	text-align:center;
 }
 a:link{ 
-	color:red; 
+	color:#0194A9; 
 }
 a:visited { 
-	color:red; 
+	color:#10535C; 
 }
 a:hover {
-	color: !important;
+	color:#ffa426 !important;
+	text-decoration: none !important;
 	}
 a:active {
-	color: !important;
+	color:#a87125 !important;
+	text-decoration: none !important;
 }
 
 .assignment-pic{
-	width: 100%;
+	width: 96%;
+	display: block;
+ 	margin-left:auto;
+ 	margin-right:auto;
+ 	margin-top:auto;
+ 	margin-bottom:auto;
+	transition: opacity .5s, width 1s ;
+	transition-timing-function: ease;
 }
+
+.assignment-pic:hover{
+	width: 100%;
+	opacity: .5;
+}
+
+.jumbotron{
+ 	margin-top:120px;
+ 	margin-left: 0%;
+ 	margin-right:20%;
+ 	transition: margin-left 2s, margin-right 2s;
+ }
+
+ .jumbotron:hover {
+ 	margin-left: 20%;
+ 	margin-right: 0%;
+ }
 
 .container-fluid {
     padding-top: 20px;
     padding-bottom: 20px;
 }
  .bg-2 {
- 	background-color:#fffaf4;
- 	margin-top: 90px;
+ 	background-color:#F4F6FE;
+ 	margin-top: 110px;
 }
 .bg-1 {
- 		background-color:powderblue;
- 		font-family: "Abril Fatface";
- 		color:black;
+ 	background-color:#80C1CA;
+ 	font-family: "Abril Fatface";
  }
  .bore {
- 	border: lightblue dotted 5px;
+ 	border: #B2EAD5 dotted 5px;
  }
  .bott {
- 	background-color: darkgrey;
+ 	background-color: #B9C3EA;
+ 	padding-bottom: 90px;
+ 	margin-bottom:20px;
  }
+
+ .top{
+ 	margin-top:120px;
+ }
+ .profile {
+ 	 	width: 65%;
+ 	display: block;
+ 	margin-left:auto;
+ 	margin-right:auto;
+ 	margin-top:auto;
+ 	margin-bottom:auto;
+ }
+
+
