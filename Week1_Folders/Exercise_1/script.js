@@ -7,7 +7,7 @@ function setup(){
 
 function draw(){
   stroke(100);
-  background(0);
+  background(255);
   for (var i = 0; i <= 1; i+=.1) {
     fill(200,0,0 )
     ellipse(width*i,450,50,50);
