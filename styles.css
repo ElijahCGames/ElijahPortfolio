@@ -34,6 +34,12 @@ a:active {
 	text-decoration: none !important;
 }
 
+#defaultCanvas0{
+	display: block;
+	margin-right:auto;
+	margin-left:auto;
+}
+
 .assignment-pic{
 	width: 96%;
 	display: block;
