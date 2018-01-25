@@ -76,6 +76,7 @@ function setup(){
 	quad(treeX-15,400,treeX+15,400,treeX+25,150,treeX-25,150);
 	//Leaves
 	for (var i = 0; i <= 50; i++) {
+		noStroke();
 		branchX = randomGaussian(treeX,40);
 		branchY = randomGaussian(150,50);
 		branchDiam = random(10,60);
