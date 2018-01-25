@@ -25,8 +25,24 @@ function setup(){
 	rect(0,250,500,250);
 	fill(214, 255, 252);
 	rect(0,0,500,250);
-
-
+	//Mountain
+	for (var i = 0; i < 500; i+=50) {
+		fill(69, 87, 114)
+		triangle(i-randomGaussian(10,10),250,
+			i+randomGaussian(50,10),250,
+			i+randomGaussian(25,5),250-randomGaussian(50,8))
+	}
+	//Clouds
+	noStroke();
+	fill(255,150);
+	for (var i = 0; i <= 30; i++) {
+		cloudX = random(50,450);
+		cloudY = random(50,200);
+		cloudRadius = random(20,50);
+		ellipse(cloudX,cloudY,cloudRadius);
+		ellipse(cloudX-20,cloudY+(cloudRadius/4),cloudRadius/1.5);
+		ellipse(cloudX+20,cloudY+(cloudRadius/4),cloudRadius/1.5);
+	}
 	//Rocks
 	fill(150);
 	strokeWeight(2);
@@ -53,17 +69,6 @@ function setup(){
 				   grassX+random(-15,15),grassY-random(0,30),
 				    grassX+random(-15,15),grassY-random(0,30)); 
 		}
-	}
-	//Clouds
-	noStroke();
-	fill(255,150);
-	for (var i = 0; i <= 30; i++) {
-		cloudX = random(50,450);
-		cloudY = random(50,200);
-		cloudRadius = random(20,50);
-		ellipse(cloudX,cloudY,cloudRadius);
-		ellipse(cloudX-20,cloudY+(cloudRadius/4),cloudRadius/1.5);
-		ellipse(cloudX+20,cloudY+(cloudRadius/4),cloudRadius/1.5);
 	}
 	//Tree
 	fill(127, 91, 53);
