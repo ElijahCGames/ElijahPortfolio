@@ -1,3 +1,8 @@
+/*Elijah Cobb
+Artg:2260 Programming Basics: Section 2
+ecobb81@gmail.com 
+Assignment 1.0
+Title: Rodin*/
 
 //Head
 var HX = 250;
@@ -14,22 +19,18 @@ var LFY = 400;
 //Right Knee
 var RKX = 275;
 var RKY = 420;
-
 //Right Foot
 var RFX = 250;
 var RFY = 495
 //Pelvis
 var PX = 230;
 var PY = 350;
-
 //Right Elbow
 var REX = 280;
 var REY = 280;
-
 //Right Hand
 var RHX = 259;
 var RHY = 177;
-
 //Left Elbow
 var LEX = 316;
 var LEY = 208;
@@ -48,18 +49,20 @@ function setup(){
 }
 
 function draw(){
+  //Declaring Angles
   angleMode(DEGREES);
   LHX = LEX+(80*((mouseX-LEX)/(sqrt(sq(LEY-mouseY)+ sq(LEX-mouseX)))))
   LHY = LEY-(80*((LEY-mouseY)/(sqrt(sq(LEY-mouseY)+sq(LEX-mouseX)))))
   theta = asin(((LEY-mouseY)/(sqrt(sq(LEY-mouseY)+sq(LEX-mouseX)))))
+  //Declaring Begining Objects
   background(225);
   fill(225);
   stroke(0);
   strokeWeight(5)
+  //Body
   bezier(HX,HY,150,200,150,300,PX,PY);
-
-  fill(255);
   //Head
+  fill(255);
   ellipse(HX,HY,150,150);
   //Eye
   ellipse(EX,EY,40,40);
@@ -103,6 +106,7 @@ function draw(){
        LEX-(cos(theta+theDev)*100),LEY-(sin(theta+theDev)*100));
   }
   fill(255);
+  //FinalObjects
   quad(LFX-20, LFY, LFX+20, LFY, LFX+800, height, LFX-50, height);
   triangle(RFX,500,0,500,75,0);
   rect(0,0,75,500)
