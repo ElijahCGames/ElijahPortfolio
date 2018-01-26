@@ -17,9 +17,11 @@ var brackX;
 var branchY;
 var branchDiam;
 var theta = 45;
+var cvn;
 
 function setup(){
-	createCanvas(500,500);
+	var can = createCanvas(500,500);
+  	can.parent('sketch-holder');
 	noStroke();
 	fill(0,200,100);
 	rect(0,250,500,250);

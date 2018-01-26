@@ -1,6 +1,7 @@
 
 function setup(){
-  createCanvas(500,500);
+  var can = createCanvas(500,500);
+  can.parent("sketch-holder");
   fill(200,0,0);
 
 }
