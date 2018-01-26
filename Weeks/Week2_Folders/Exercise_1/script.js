@@ -1,24 +1,24 @@
 
 function setup(){
-  var can = createCanvas(500,500);
+  var can = createCanvas(600,600);
   can.parent("sketch-holder");
-  fill(200,0,0);
-
+  background(255);
 }
 
 function draw(){
-  stroke(100);
-  background(255);
-  for (var i = 0; i <= 1; i+=.1) {
-    fill(200,0,0 )
-    ellipse(width*i,450,50,50);
-    fill(0,0,200);
-    rect(50,50,50,50);
-    fill(0,200,0);
-    triangle(50,200,30,400,500,60)
-    stroke(200,0,0);
-    line(width/2*i,400,250-((250-mouseX)*i),400-((400-mouseY)*i));
-    stroke(0,0,200);
-    line((width)-(width/2)*i,400,250-((250-mouseX)*i),400-((400-mouseY)*i));
+  noStroke();
+  for (var x = 0; x < width; x+=width/10) {
+    for(var y = 0; y <height; y+=height/10) {
+      if(x/(width/10)%2 == 0 && y/(height/10)%2==0){
+        fill(255);
+      }else if(x/(width/10)%2==0){
+        fill(0,(255/width)*x,0)
+      }else if(y/(height/10)%2==0){
+        fill(0,0,(255/height)*y)
+      }else{
+        fill(0,(255/width)*x,(255/height)*y);
+      }
+      ellipse(x+width/20,y+height/20,min(width/20,height/20));
+    }
   }
 }
