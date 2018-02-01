@@ -81,6 +81,10 @@ function menu(){
   ellipse(width-100,50,60);
   fill(lineColorR,lineColorG,lineColorB);
   ellipse(width-155,50,strokeW);
+  fill(0);
+  rect(width-230,45,40,10);
+  rect(width-120,45,40,10);
+  rect(width-105,30,10,40);
   fill(255);
   for(var x = 0; x<4; x++){
     for(var y = 0; y<3; y++){
