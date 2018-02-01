@@ -1,3 +1,9 @@
+/*Elijah Cobb
+Artg:2260 Programming Basics: Section 2
+ecobb81@gmail.com 
+Assignment 2.1
+Title: Drawing Application*/
+
 var height = 600;
 var width = 600;
 
@@ -20,9 +26,11 @@ var lineCheck = 0;
 
 var strokeW = 1;
 
+var can;
+
 
 function setup(){
-  var can = createCanvas(600,600);
+  can = createCanvas(600,600);
   can.parent("sketch-holder");
   background(255,255,255);
 }
@@ -44,6 +52,9 @@ function draw(){
 function mouseReleased() {
   if(mouseX>9 && mouseX<60 && mouseY>9 && mouseY<30){
       background(255);
+  }
+  if(mouseX>9 && mouseX<60 && mouseY>34 && mouseY<56){
+      saveCanvas(can, 'drawing', 'jpg');
   }
   if(mouseX>width-60 && mouseX<width-10 && mouseY<60 && mouseY>10){
       if(rectangle == 0){
@@ -90,10 +101,12 @@ function demenu(){
 function UI(){
   fill(255);
   rect(10,10,50,20);
+  rect(10,35,50,20);
   rect(width-60,10,50,50);
   fill(0);
   textSize(20);
   text("Clear",11,12,50,20);  
+  text("Save",11,37,50,20);
   fill(180);
   triangle(width-50,20,width-20,20,width-35,50);
 }

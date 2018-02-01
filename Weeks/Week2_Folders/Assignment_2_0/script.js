@@ -1,3 +1,9 @@
+/*Elijah Cobb
+Artg:2260 Programming Basics: Section 2
+ecobb81@gmail.com 
+Assignment 2.1
+Title: Candyland*/
+
 var div = 10;
 var divider = 6.5;
 var rad = div/divider;
