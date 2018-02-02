@@ -43,10 +43,10 @@ function draw(){
   ySpeed += yAccel;
   // if we reach the edge of the canvas
   // turn around (toggle xSpeed negative to positive)
-  if(xPos<-imageWidth/2|| xPos>width-imageWidth/2){
+  if(xPos<0-imageWidth/2|| xPos>width-imageWidth/2){
     xSpeed *= -1;
   }
-  if(yPos<-imageHeight/2|| yPos>height-imageHeight/2){
+  if(yPos<0-imageHeight/2|| yPos>height-imageHeight/2){
     ySpeed *= -1;
   }
   // same as above, toggle ySpeed if we hit the top or bottom
