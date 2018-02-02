@@ -19,7 +19,7 @@ function setup() {
   // create a canvas at least 400 x 400
   can = createCanvas(400,400);
   can.parent("sketch-holder");
-  img = loadImage("../../../Images/drawing.jpg");
+  img = loadImage("../../../Images/B&Wback.png");
   // set xPos to be half of the width 
   // set yPos to be half of the height
   xPos = width/2;
