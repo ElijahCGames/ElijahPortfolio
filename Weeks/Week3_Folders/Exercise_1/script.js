@@ -22,8 +22,8 @@ function setup() {
   img = loadImage("../../../Images/B&Wback.png");
   // set xPos to be half of the width 
   // set yPos to be half of the height
-  xPos = width/2;
-  yPos = height/2
+  xPos = width/2-3;
+  yPos = height/2-4
   // assign xSpeed and ySpeed 
   // with random values between 1 and 10
   xSpeed = random(1,10);
