@@ -9,8 +9,8 @@ var ySpeed;
 var img;
 // declare a var for image width, assign 40 
 // declare a var for image height, assign 30
-var imageWidth = 40;
-var imageHeight = 30;
+var imageWidth = 800;
+var imageHeight = 800;
 // use the preload()function to load an image, 
 // format: img = loadImage('assets/imageName.png');
 // you'll need to create a folder called assets, and include the png there
@@ -43,10 +43,10 @@ function draw(){
   ySpeed += yAccel;
   // if we reach the edge of the canvas
   // turn around (toggle xSpeed negative to positive)
-  if(xPos<0|| xPos>width-imageWidth){
+  if(xPos<-imageWidth/2|| xPos>width-imageWidth/2){
     xSpeed *= -1;
   }
-  if(yPos<0 || yPos>height-imageHeight){
+  if(yPos<-imageHeight/2|| yPos>height-imageHeight/2){
     ySpeed *= -1;
   }
   // same as above, toggle ySpeed if we hit the top or bottom
