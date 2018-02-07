@@ -1,29 +1,56 @@
+var array = [];
+var length;
+var numLines = 20;
 var theta = 0;
-var length = 100;
-var xturn;
-var yturn;
-var pivZip;
-var pivOne;
-var pivTwo;
+
 function setup() {
   can = createCanvas(600,600);
   can.parent("sketch-holder");
+  numLines = floor(random(2,20));
+  print(numLines);
   angleMode(DEGREES);
-  background(255);
-  pivZip = random(0,3);
-  pivOne = random(0,3);
-  pivTwo = random(0,3);
-  print (pivZip + ", " + pivOne + ", " + pivTwo);
+  background(0);
+  //Intilaizing the Seed Line
+  seeding();
+  sending();
 }
   
 function draw(){
-  strokeWeight(.1);
-  xturn = width/2+(length*cos(theta*pivZip))
-  yturn = height/2-(length*sin(theta*pivZip))
-  xpiv = xturn+(length*cos(theta*pivOne))
-  ypiv = yturn-(length*sin(theta*pivOne))
-  line(width/2,height/2,xturn,yturn);
-  line(xturn,yturn,xpiv,ypiv);
-  line(xpiv,ypiv,xpiv+(length*cos(2*pivTwo*theta)),ypiv-(length*sin(pivTwo*theta)));
-  theta ++;
+  for (var i = 1; i <= numLines; i++){
+    var endPoint = declaring(i);
+    var beginPoint = array[i-1];
+    stroke(map(i,1,numLines,0,255),map(i,1,numLines,0,255));
+    strokeWeight(.5);
+    if(frameCount%10 == 0){
+      line(map(beginPoint.x,0,width,width,0),beginPoint.y,map(endPoint.x,0,width,width,0),endPoint.y);
+    }
+    line(beginPoint.x,beginPoint.y,endPoint.x,endPoint.y);
+    array[i] = endPoint;
+  }
+  theta++;
+}
+
+function declaring(e){
+  var lastLine = array[e-1];
+    var lineObj = {
+      x: lastLine.x + (length*cos(theta*.5*e)),
+      y: lastLine.y - (length*sin(theta*.5*e))
+    }
+  return(lineObj);
+}
+
+function sending(){
+  for (var i = 1; i <= numLines; i++) {
+    var lineObject = declaring(i);
+    append(array,lineObject);
+  }
+}
+
+function seeding(){
+  var seed = {
+    x: width/2,
+    y: height/2
+  };
+  array = [seed];
+  length = (width/2)/numLines;
 }
