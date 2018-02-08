@@ -10,15 +10,19 @@ function setup() {
   print(numLines);
   angleMode(DEGREES);
   background(0);
+
   //Intilaizing the Seed Line
   seeding();
+  //Sends the beginging line objects to the array
   sending();
 }
   
 function draw(){
+  //draws the line based on the declared array
   for (var i = 1; i <= numLines; i++){
     var endPoint = declaring(i);
     var beginPoint = array[i-1];
+    //Sets stroke colors so that the center is black and outside is white
     stroke(map(i,1,numLines,0,255),map(i,1,numLines,0,255));
     strokeWeight(.5);
     if(frameCount%10 == 0){
@@ -31,6 +35,7 @@ function draw(){
 }
 
 function declaring(e){
+  //Sets the line coordinates for all lines when called
   var lastLine = array[e-1];
     var lineObj = {
       x: lastLine.x + (length*cos(theta*.5*e)),
