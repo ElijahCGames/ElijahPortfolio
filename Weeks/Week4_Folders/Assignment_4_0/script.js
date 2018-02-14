@@ -1,53 +1,132 @@
-// declare variables xPos and yPos
-var xPos;
-var yPos;
-// declare a var called xSpeed;
-var xSpeed;
-// declare a var called ySpeed
-var ySpeed;
-// declare a variable called img 
-var img;
-// declare a var for image width, assign 40 
-// declare a var for image height, assign 30
-var imageWidth = 40;
-var imageHeight = 30;
-// use the preload()function to load an image, 
-// format: img = loadImage('assets/imageName.png');
-// you'll need to create a folder called assets, and include the png there
+var ston = [];
+var leng = 0;
+var gameState = "start";
+var aimingStone;
 
 function setup() {
-  // create a canvas at least 400 x 400
-  can = createCanvas(400,400);
+  can = createCanvas(200,600);
   can.parent("sketch-holder");
-  img = loadImage("../../../Images/B&Wback.png");
-  // set xPos to be half of the width 
-  // set yPos to be half of the height
-  xPos = width/2;
-  yPos = height/2
-  // assign xSpeed and ySpeed 
-  // with random values between 1 and 10
-  xSpeed = random(1,10);
-  ySpeed = random(1,10);
-  //Accelration
-  yAccel = .1;
+  angleMode(DEGREES);
+  rectMode(CENTER);
 }
 
 function draw(){
-  background(0);                 // set the background to black
-
-  image(img,xPos,yPos,imageWidth,imageHeight);// draw the image at the (xPos, yPos) coordinate,
-  // using the template image(img, xPos, yPos, width, height)
-
-  xPos += xSpeed; // add the xSpeed to xPos
-  yPos += ySpeed;// add the ySpeed to yPos
-  ySpeed += yAccel;
-  // if we reach the edge of the canvas
-  // turn around (toggle xSpeed negative to positive)
-  if(xPos<0|| xPos>width-imageWidth){
-    xSpeed *= -1;
+  background(255);
+  groundElements();
+  if(gameState == "start"){
+  	startScreen();
+  }else if(gameState == "aiming"){
+ 	aiming();
+  }else if(gameState == "curling"){
+  	curling();
   }
-  if(yPos<0 || yPos>height-imageHeight){
-    ySpeed *= -1;
-  }
-  // same as above, toggle ySpeed if we hit the top or bottom
+}
+
+function keyReleased(){
+	if(gameState == "start" && keyCode == 32){
+		gameState = "aiming";
+		ston[0] = new Stone();
+	}
+	return false;
+}
+
+function groundElements(){
+	noStroke();
+	fill(15, 84, 196);
+	ellipse(width/2,100,160);
+	fill(255);
+	ellipse(width/2,100,120);
+	fill(196, 15, 15)
+	ellipse(width/2,100,80);
+	fill(255);
+	ellipse(width/2,100,40);
+}
+
+function mouseReleased(){
+	if(gameState == "aiming"){
+		aimingStone.speedSet();
+		gameState = "curling";
+	}
+}
+
+function startScreen(){
+	 fill(0);
+  text("Press Space to Start",40,300);
+}
+
+function aiming(){
+	aimingStone = ston[leng];
+	aimingStone.aiming();
+	for(var i = 0; i<=leng; i++){
+  		ston[i].display(i);
+  	}
+}
+
+function curling(){
+	for(var i = 0; i<=leng; i++){
+  		ston[i].display(i);
+  		ston[i].move();
+  	}
+}
+
+function nextStone(){
+	let newStone = new Stone();
+	ston.push(newStone);
+	leng++;
+	aimingStone = ston[leng];
+	print(ston);
+	gameState = "aiming";
+}
+
+class Stone{
+	constructor(){
+		this.x = width/2;
+		this.y = 550;
+		this.xDist = mouseX;
+		this.yDist = mouseY;
+		this.xSpeed = .11;
+		this.ySpeed = .11;
+	}
+	display(colorSet){
+		noStroke();
+		if(colorSet%2 ==0){
+			fill(196, 15, 15);
+		}else{
+			fill(247, 243, 14);
+		}
+		translate(this.x,this.y);
+		ellipse(0,0,30);
+		fill(200);
+		rotate(((width/2)-this.x)*-8);
+		rect(0,0,4,20);
+		rotate((width/2-this.x)*8 );
+		translate(-this.x,-this.y);
+	}
+	move(){
+		this.y += this.ySpeed;
+		this.x += this.xSpeed;
+		this.ySpeed *= .994;
+		this.xSpeed *= .994;
+		if(this.xSpeed<.05 && this.xSpeed>-.05){
+			this.xSpeed = 0;
+		}
+		if(this.ySpeed>-.1 && this.ySpeed<.1){
+			this.ySpeed = 0;
+		}
+		if(aimingStone == this && this.xSpeed == 0 && this.ySpeed == 0){
+			nextStone();
+		}
+	}
+	aiming(){
+		this.xDist=mouseX;
+		this.yDist=mouseY;
+		fill(255);
+		stroke(0);
+		line(this.x,this.y,this.xDist,this.yDist);
+		ellipse(this.xDist,this.yDist,20);
+	}
+	speedSet(){
+		this.xSpeed = map(mouseX,0,width,-.7,.7);
+		this.ySpeed = map(mouseY,0,height,-3.44,.4)
+	}
 }
