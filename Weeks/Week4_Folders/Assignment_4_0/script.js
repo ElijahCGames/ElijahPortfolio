@@ -51,6 +51,10 @@ function keyReleased(){
 	}
 }
 
+function keyPressed(){
+	return false;
+}
+
 //To inititate curling
 function mouseReleased(){
 	if(gameState == "aiming" && mouseY<450){
