@@ -81,6 +81,8 @@ function startScreen(){
 	textAlign(CENTER);
   text("Press Space to Start",width/2,300);
   text("High Score: " + highScore,width/2,320);
+  text("Click where you want the stone to go",width/2,340);
+  text("USe A and D to add curl to the stone",width/2,360);
 }
 
 function aiming(){
