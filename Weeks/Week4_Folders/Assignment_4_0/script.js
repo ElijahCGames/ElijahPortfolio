@@ -46,7 +46,6 @@ function keyReleased(){
 		var firstStone = new Stone();
 		ston.push(firstStone);
 		xyTarget = [random(10,200),random(10,300)];
-		print(highScore);
 		return false;
 	}
 }
@@ -105,9 +104,9 @@ function curling(){
 }
 
 function sliding(){
-	for(var i = 0; i<=leng; i++){
+	aimingStone.move();
+	for(var i = leng; i>=0; i--){
   		ston[i].display(i);
-  		ston[i].move();
   	}
 }
 
@@ -233,7 +232,6 @@ class Stone{
 		this.xSpeed = map(mouseX,0,width,-.7,.7);
 		this.ySpeed = map(mouseY,0,height,-3.44,.4)
 	}
-
 	spinDirection(x,y,theta){
 	if(theta>0){
 		for(var i = 0; i<=theta;i++){

@@ -13,6 +13,8 @@ var highScore = 0;
 //Round set
 var ends = 0;
 
+var inMotion = false;
+
 function setup() {
   can = createCanvas(200,600);
   can.parent("sketch-holder");
@@ -87,6 +89,8 @@ function startScreen(){
   text("High Score: " + highScore,width/2,320);
   text("Click where you want the stone to go",width/2,340);
   text("USe A and D to add curl to the stone",width/2,360);
+  ston = [];
+  leng = 0;
 }
 
 function aiming(){
@@ -105,10 +109,14 @@ function curling(){
 }
 
 function sliding(){
+	aimingStone.move();
 	for(var i = 0; i<=leng; i++){
-  		ston[i].display(i);
-  		ston[i].move();
-  	}
+	  	ston[i].display(i);
+	  	ston[i].collide();
+	  	if(ston[i].collided){
+	  		ston[i].bounceMove();
+	  	}
+	}
 }
 
 //Target Setup
@@ -136,14 +144,15 @@ function scoring(){
 //Reset the loop
 function nextStone(){
 	scoring();
+	for(s of ston){
+		s.justCollided = false;
+	}
 	if(ends >= 5){
 		if(highScore<scoreValue){
 			highScore = scoreValue;
 		}
 		ends = 0;
 		scoreValue = 0;
-		ston = [];
-		leng = 0;
 		gameState = "start"
 	}else{
 		let newStone = new Stone();
@@ -166,6 +175,8 @@ class Stone{
 		this.friction = .994
 		this.curlRate = 0;
 		this.roateSpeed = 0;
+		this.collided = false;
+		this.justCollided = false;
 	}
 	//Show the Stones
 	display(colorSet){
@@ -194,13 +205,16 @@ class Stone{
 		this.ySpeed *= this.friction;
 		this.xSpeed *= this.friction;
 		this.curlRate*=this.friction;
+		if(this.x<15 || this.x>width-15){
+			this.xSpeed = -this.xSpeed;
+		}
 		if(this.xSpeed<.05 && this.xSpeed>-.05 && this.curlRate<2.5 && this.curlRate> -2.5){
 			this.xSpeed = 0;
 		}
 		if(this.ySpeed>-.1 && this.ySpeed<.1){
 			this.ySpeed = 0;
 		}
-		if(aimingStone == this && this.xSpeed == 0 && this.ySpeed == 0){
+		if(aimingStone == this && this.xSpeed == 0 && this.ySpeed == 0 && inMotion == false){
 			nextStone();
 		}
 	}
@@ -229,6 +243,58 @@ class Stone{
 		}
 		this.spinDirection(this.x,this.y,this.curlRate)
 	}
+	collide(){
+		for (var i = ston.length - 1; i >= 0; i--) {
+			if(ston[i]!== this){
+				if(dist(this.x,this.y,ston[i].x,ston[i].y)<30){
+					if(this.ySpeed< -.1 || this.ySpeed>.1){
+						if(!this.justCollided || !ston[i].justCollided){
+						//Saving the speed of the slower stone, in case something happens
+						var saveX = ston[i].xSpeed;
+						var saveY = ston[i].ySpeed;
+						//The Dot Products of things
+						var multiston = ((((saveX-this.xSpeed)*(ston[i].x-this.x))+((saveY-this.ySpeed)*(ston[i].y-this.y)))/(sq(ston[i].x-this.x)+sq(ston[i].y-this.y)));
+						//Setting the staionary stone speed
+						ston[i].ySpeed = ston[i].ySpeed - (multiston*(ston[i].y-this.y));
+						ston[i].xSpeed = ston[i].xSpeed - (multiston*(ston[i].x-this.x));
+						//Setting the moving stone Speed
+						this.ySpeed = this.ySpeed - (multiston*(this.y-ston[i].y));
+						this.xSpeed = this.xSpeed - (multiston*(this.x-ston[i].x));
+						//Telling the world about the collision
+						ston[i].collided = true;
+						inMotion = true;
+						this.justCollided = true;
+						ston[i].justCollided = true;
+						}
+					}
+				}
+			}
+		}
+	}
+	bounceMove(){
+		if(aimingStone != this){
+			this.y += this.ySpeed;
+			this.x += this.xSpeed;
+			this.ySpeed *= this.friction;
+			this.xSpeed *= this.friction;
+			if(this.x<15 || this.x>width-15){
+			this.xSpeed = -this.xSpeed;
+			}
+			if(this.ySpeed>-.1 && this.ySpeed<.1){
+				this.ySpeed = 0;
+			}
+			if(this.xSpeed<.05 && this.xSpeed>-.05){
+				this.xSpeed = 0;
+			}
+			if(this.xSpeed == 0 && this.ySpeed == 0){
+				this.collided = false;
+				inMotion = false;
+			}else{
+				this.collided = true;
+				inMotion = true;
+			}
+		}
+    }
 	speedSet(){
 		this.xSpeed = map(mouseX,0,width,-.7,.7);
 		this.ySpeed = map(mouseY,0,height,-3.44,.4)
