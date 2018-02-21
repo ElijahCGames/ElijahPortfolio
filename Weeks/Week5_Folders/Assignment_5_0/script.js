@@ -13,7 +13,7 @@ var highScore = 0;
 //Round set
 var ends = 0;
 
-var inMotion = false;
+var inMotion = 0;
 
 function setup() {
   can = createCanvas(200,600);
@@ -116,6 +116,12 @@ function sliding(){
 	  	if(ston[i].collided){
 	  		ston[i].bounceMove();
 	  	}
+	  	if(ston[i].justCollided){
+	  		var currentFrame = frameCount
+	  		if(currentFrame + 10 < frameCount){
+	  			ston[i].justCollided = false;
+	  		}
+	  	}
 	}
 }
 
@@ -147,7 +153,7 @@ function nextStone(){
 	for(s of ston){
 		s.justCollided = false;
 	}
-	if(ends >= 5){
+	if(ends >= 10){
 		if(highScore<scoreValue){
 			highScore = scoreValue;
 		}
@@ -207,6 +213,7 @@ class Stone{
 		this.curlRate*=this.friction;
 		if(this.x<15 || this.x>width-15){
 			this.xSpeed = -this.xSpeed;
+			this.justCollided = false;
 		}
 		if(this.xSpeed<.05 && this.xSpeed>-.05 && this.curlRate<2.5 && this.curlRate> -2.5){
 			this.xSpeed = 0;
@@ -214,7 +221,7 @@ class Stone{
 		if(this.ySpeed>-.1 && this.ySpeed<.1){
 			this.ySpeed = 0;
 		}
-		if(aimingStone == this && this.xSpeed == 0 && this.ySpeed == 0 && inMotion == false){
+		if(aimingStone == this && this.xSpeed == 0 && this.ySpeed == 0 && inMotion == 0){
 			nextStone();
 		}
 	}
@@ -261,8 +268,10 @@ class Stone{
 						this.ySpeed = this.ySpeed - (multiston*(this.y-ston[i].y));
 						this.xSpeed = this.xSpeed - (multiston*(this.x-ston[i].x));
 						//Telling the world about the collision
+						if(ston[i].collided == false){
+							inMotion++;
+						}
 						ston[i].collided = true;
-						inMotion = true;
 						this.justCollided = true;
 						ston[i].justCollided = true;
 						}
@@ -278,7 +287,8 @@ class Stone{
 			this.ySpeed *= this.friction;
 			this.xSpeed *= this.friction;
 			if(this.x<15 || this.x>width-15){
-			this.xSpeed = -this.xSpeed;
+				this.xSpeed = -this.xSpeed;
+				this.justCollided = false;
 			}
 			if(this.ySpeed>-.1 && this.ySpeed<.1){
 				this.ySpeed = 0;
@@ -288,10 +298,7 @@ class Stone{
 			}
 			if(this.xSpeed == 0 && this.ySpeed == 0){
 				this.collided = false;
-				inMotion = false;
-			}else{
-				this.collided = true;
-				inMotion = true;
+				inMotion--;
 			}
 		}
     }
