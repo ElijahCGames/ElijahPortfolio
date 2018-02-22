@@ -648,7 +648,6 @@ class Powerup{
 		}else if(this.type.id == 2){
 			var tiny = 1 - aimingStone.friction;
 			aimingStone.friction += tiny/2;
-			print(aimingStone.friction)
 		}else if(this.type.id == 3){
 			aimingStone.mass *= 4;
 			aimingStone.diameter *= 1.2;
