@@ -273,7 +273,7 @@ function sliding(){
 	  	}
 	  	if(ston[i].justCollided){
 	  		var currentFrame = frameCount
-	  		if(currentFrame + 10 < frameCount){
+	  		if(currentFrame + 1 < frameCount){
 	  			ston[i].justCollided = false;
 	  		}
 	  	}
