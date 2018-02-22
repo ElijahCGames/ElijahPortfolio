@@ -126,8 +126,6 @@ function mouseReleased(){
 				if(gameMode == "party"){
 					throwNum = partyNum;
 					endNum = partyEnds;
-					yellowWins = 0;
-					redWins = 0;
 					var newPower = new Powerup();
 					pUp.push(newPower);
 				}
