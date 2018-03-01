@@ -1,14 +1,17 @@
 var ropeParts = [];
 var objects = [];
 
+var objectNum = 11;
+var ropeLength = 200;
 function setup() {
   can = createCanvas(600,600);
   can.parent("sketch-holder");
-  for(var i = 0; i<100; i++){
+  rectMode(CENTER);
+  for(var i = 0; i<ropeLength; i++){
   	var newPart = new RopeParts(i);
   	ropeParts.push(newPart);
   }
-  for(var i = 0; i<10; i++){
+  for(var i = 0; i<objectNum; i++){
   	var newPart = new Obstacle();
   	objects.push(newPart);
   }
@@ -35,7 +38,7 @@ class RopeParts{
 		this.vec = createVector(0,0);
 		this.ropeNum = num;
 		this.force;
-		this.grav = 0;
+		this.grav = .5;
 	}
 	display(){
 		//ellipse(this.vec.x,this.vec.y,10);
@@ -54,6 +57,7 @@ class RopeParts{
 			this.force = p5.Vector.sub(ropeParts[this.ropeNum - 1].vec, this.vec);
 		}
 		this.vec.y += this.grav;
+		this.vec.x += this.grav;
 		if(this.force.mag()>10){
 			this.vec.add(this.force.div(5));
 		}
@@ -76,9 +80,17 @@ class Obstacle{
 		this.vecl = createVector(random(-2,2),random(-2,2));
 	}
 	display(){
-		noStroke();
-		fill(255,1)
-		ellipse(this.vect.x,this.vect.y,this.rad*2);
+		push();
+			noStroke();
+			fill(255,1);
+			translate(this.vect.x,this.vect.y);
+			ellipse(0,0,this.rad*2);
+			push();
+				fill(0,200,100,3);
+				rotate(frameCount/30);
+				rect(0,0,this.rad,this.rad);
+			pop();
+		pop();
 	}
 	move(){
 		this.vect.add(this.vecl);
