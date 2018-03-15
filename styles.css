@@ -102,3 +102,22 @@ a:active {
 	margin-bottom: 0px;
 }
 
+.button{
+	background-color:#B9C3EA;
+	font-family:"Abril Fatface";
+	border:none;
+	color:white;
+	padding: 14px 40px;
+	font-size: 30px;
+	border-radius:4px;
+	margin-right:4px;
+	margin-left:4px;
+}
+
+.button:hover{
+	background-color:#684a6d;
+}
+
+.button:active{
+	opacity:.7;
+}
