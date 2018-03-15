@@ -34,10 +34,11 @@ a:active {
 	text-decoration: none !important;
 }
 
-#defaultCanvas0{
+.defaultCanvas{
 	display: block;
 	margin-right:auto;
 	margin-left:auto;
+
 }
 
 .assignment-pic{
@@ -96,5 +97,8 @@ a:active {
  	margin-top:auto;
  	margin-bottom:auto;
  }
-
+.noMargin {
+	margin-top:0px;
+	margin-bottom: 0px;
+}
 
