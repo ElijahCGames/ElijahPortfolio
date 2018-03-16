@@ -35,7 +35,9 @@ function drawMap(){
   var options = {
     displayMode: 'markers',
     region: reg,
-    colorAxis: {colors: ['yellow','red']}
+    colorAxis: {colors: ['yellow','red']},
+    datalessRegionColor: "white",
+    backgroundColor: "black"
   };
   chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
   google.visualization.events.addListener(chart, 'ready',
