@@ -34,6 +34,10 @@ a:active {
 	text-decoration: none !important;
 }
 
+#sketch-holder{
+	margin-right:auto;
+	margin-left:auto;
+}
 .defaultCanvas{
 	display: block;
 	margin-right:auto;
